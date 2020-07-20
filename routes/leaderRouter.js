@@ -10,8 +10,8 @@ const cors=require('./cors');
 
 leaderRouter.route('/')
 .options(cors.corsWithOptions,(req,res)=>{res.sendStatus(200)})
-  .get(cors.cors,authenticate.verifyUser,(req,res,next) => {
-     leaders.find({})
+  .get(cors.cors,(req,res,next) => {
+     leaders.find(req.query)
      .then((leader)=>{
        res.statusCode=200;
        res.setHeader('Content-Type','application/json');
