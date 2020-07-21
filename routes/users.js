@@ -8,7 +8,7 @@ let authenticate=require('../authenticate');
 const cors=require('./cors')
 
 /* GET users listing. */
-router.options('*',cors.corsWithOptions,(req,res)=>{res.statusCode=200})
+
 router.route('/')
 .options(cors.corsWithOptions,(req,res)=>{res.sendStatus(200)})
 .get(cors.cors,authenticate.verifyUser,authenticate.verifyAdmin, function(req, res, next) {
