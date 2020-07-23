@@ -7,7 +7,7 @@ const authenticate=require('../authenticate');
 const cors=require('./cors');
 
 commentRouter.route('/')
-
+.options(cors.corsWithOptions,(req,res)=>{res.sendStatus(200)})
   .get(cors.cors,(req,res,next) => {
      Comment.findById(req.query)
      .populate('author')
@@ -70,7 +70,7 @@ commentRouter.route('/')
 //Rest API for http://localhost:3000/dishes/:dishid/comments/:commentsId
 
 commentRouter.route('/:commentId')
-
+.options(cors.corsWithOptions,(req,res)=>{res.sendStatus(200)})
 .get(cors.cors, (req,res,next) => {
     Comment.findById(req.params.commentId)
      .populate('author')

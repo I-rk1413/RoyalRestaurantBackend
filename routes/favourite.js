@@ -182,29 +182,20 @@ favouriteRouter.route('/:dishId')
                         res.json('This dish is not present in your favourite list');
                     }
                    else{
-                                  favourite.dishes.splice(index,1);
-                                  favourite.save()
-                                  .then(favourite=>{
-                                    favorites.findById(favourite._id)
-                                    .populate('user')
-                                    .populate('dishes')
-                                    .then((favourite)=>{
-                                        res.statusCode=200;
-                                        res.setHeader('Content-Type','application/json');
-                                        res.json("Deleted successfully",favourite)
-
-                                    })
-                                   
-
-                                  })
-                                  .catch((err)=>{
-                                      console.log("Error",err)
-                                  })
-                                  
-
-                                
-                       
-                           }   
+                           favourite.dishes.splice(index,1);
+                           favourite.save()
+                           .then((favourite)=>{
+                             favourites.findById(favourite._id)
+                             .populate('user')
+                             .populate('dishes')
+                             .then((favourite)=>{
+                               res.status(200).json(favourite)
+                             })
+                           })
+                              .catch((err)=>{
+                                   console.log("Error",err)
+                            })
+                         }   
             }   
     
         else{
