@@ -9,7 +9,7 @@ const cors=require('./cors');
 commentRouter.route('/')
 .options(cors.corsWithOptions,(req,res)=>{res.sendStatus(200)})
   .get(cors.cors,(req,res,next) => {
-     Comment.findById(req.query)
+     Comment.find(req.query)
      .populate('author')
      .then((comments)=>{
          
