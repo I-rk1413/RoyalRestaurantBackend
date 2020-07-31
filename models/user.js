@@ -10,9 +10,9 @@ let userSchema=new schema({
 	},
 	lastname:{
         type:String,
-		default:''
-	},
-	facebookId:String,
+		default:''},
+	// },
+	// facebookId:String,
 	admin:{
 		type:Boolean,
 		default:false
