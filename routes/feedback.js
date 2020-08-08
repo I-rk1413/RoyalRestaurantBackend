@@ -8,6 +8,15 @@ const cors=require('./cors');
 
 feedbackRouter.route('/')
 .options(cors.corsWithOptions,(req,res)=>{res.sendStatus(200)})
+.get(cors.cors,authenticate.verifyUser,authenticate.verifyAdmin,(req,res,next)=>{
+    Feedback.find({})
+     .then((feedback)=>{
+       res.statusCode=200;
+       res.setHeader('Content-Type','application/json');
+       res.json(feedback)
+     })
+     .catch(console.log)
+})
 .post(cors.cors,(req, res, next) => {
       if(req.body !== null){
 
