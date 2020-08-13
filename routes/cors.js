@@ -2,7 +2,7 @@ const express=require('express');
 const cors=require('cors');
 const app=express();
 
-const whiteList=["http://localhost:3000"];
+const whiteList=["http://localhost:3000","https://royalrestaurant.herokuapp.com"];
 
 let corsOptionsDelegate=(req,cb)=>{
 	let corsOptions;
